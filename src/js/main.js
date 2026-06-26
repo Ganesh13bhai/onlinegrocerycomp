@@ -1,17 +1,17 @@
 /**
  * MAIN EXECUTION ORCHESTRATOR
- * Initializes layout systems and enforces strict performance orchestration boundaries (<500ms)[cite: 62, 80].
+ * Initializes layout systems and enforces strict performance orchestration boundaries (<500ms).
  */
 
 import { updateGroceryPrices } from './pricingMatrix.js';
 import { initBentoAccordion } from './bentoAccordion.js';
 
-// Track execution timelines using high-precision performance markers [cite: 62]
+// Track execution timelines using high-precision performance markers
 const initializationStart = performance.now();
 
 document.addEventListener('DOMContentLoaded', () => {
   
-  // 1. Initialize Feature 2: Bento-to-Accordion Grid View Listeners [cite: 74]
+  // 1. Initialize Feature 2: Bento-to-Accordion Grid View Listeners
   initBentoAccordion();
 
   // 2. Fetch Core Structural Control Elements
@@ -23,15 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentCurrency = currencySelect.value || 'INR';
   let isBulkOrder = false;
 
-  // 3. Event Listener: Dynamic Currency Selection Dropdown Switcher [cite: 41, 59]
+  // 3. Event Listener: Dynamic Currency Selection Dropdown Switcher
   currencySelect.addEventListener('change', (e) => {
     currentCurrency = e.target.value;
     
-    // SURGICAL RUNTIME ENGINE: Triggers zero-parent reflow localized mutations [cite: 59, 60]
+    // SURGICAL RUNTIME ENGINE: Triggers zero-parent reflow localized mutations
     updateGroceryPrices(currentCurrency, isBulkOrder);
   });
 
-  // 4. Event Listener: Isolated Weight Option Toggle Switcher [cite: 41, 59]
+  // 4. Event Listener: Isolated Weight Option Toggle Switcher
   billingToggle.addEventListener('click', () => {
     // Reverse binary checked status state 
     isBulkOrder = !isBulkOrder;
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update structural ARIA specifications for accessible indexing
     billingToggle.setAttribute('aria-checked', isBulkOrder.toString());
     
-    // Hardware-accelerated micro-interaction layout update (150ms - 200ms ease-out) [cite: 65]
+    // Hardware-accelerated micro-interaction layout update (150ms - 200ms ease-out)
     if (isBulkOrder) {
       billingToggle.classList.add('bg-[#FFC801]');
       toggleHandle.classList.replace('translate-x-0', 'translate-x-5');
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleHandle.classList.replace('bg-[#172836]', 'bg-[#F1F6F4]');
     }
 
-    // SURGICAL RUNTIME ENGINE: Compute multi-dimensional layout shifts instantly [cite: 43, 59]
+    // SURGICAL RUNTIME ENGINE: Compute multi-dimensional layout shifts instantly
     updateGroceryPrices(currentCurrency, isBulkOrder);
   });
 
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // HARDWARE-ACCELERATED ISOLATED SMART DATA MATRIX STATE EXTENSION
   // ==========================================================================
   
-  // Real Localized State (Keeps data binding strictly out of global view reflows) [cite: 60]
+  // Real Localized State (Keeps data binding strictly out of global view reflows)
   const cartState = {};
 
   const cartDrawer = document.getElementById('cart-drawer');
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Increment state tally context
       cartState[itemKey] = (cartState[itemKey] || 0) + 1;
       
-      // Flash button state visually as micro-interaction response [cite: 65]
+      // Flash button state visually as micro-interaction response
       const originalText = button.innerText;
       button.innerText = "✓ Allocated";
       button.style.color = '#172836';
@@ -100,9 +100,32 @@ document.addEventListener('DOMContentLoaded', () => {
         button.style.borderColor = '';
       }, 700);
 
-      // Perform a surgical render updates across the drawer metrics [cite: 60]
+      // Perform a surgical render updates across the drawer metrics
       renderCartUpdates();
     });
+  });
+
+  // NEW INTERACTIVE DELEGATION CONTROL: Listens for inline manual increment/decrement commands
+  cartItemsWrapper.addEventListener('click', (e) => {
+    const minusTarget = e.target.closest('.cart-minus-action');
+    const plusTarget = e.target.closest('.cart-plus-action');
+    
+    if (minusTarget) {
+      const itemKey = minusTarget.getAttribute('data-item');
+      if (cartState[itemKey] > 0) {
+        cartState[itemKey]--;
+        if (cartState[itemKey] === 0) {
+          delete cartState[itemKey];
+        }
+        renderCartUpdates();
+      }
+    }
+    
+    if (plusTarget) {
+      const itemKey = plusTarget.getAttribute('data-item');
+      cartState[itemKey] = (cartState[itemKey] || 0) + 1;
+      renderCartUpdates();
+    }
   });
 
   function renderCartUpdates() {
@@ -126,16 +149,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const itemCost = activePrices[key] * quantity;
       computedTotalValue += itemCost;
 
-      // Create isolated wrapper child layout strings
+      // Create isolated wrapper child layout strings with integrated control elements
       const itemRow = document.createElement('div');
-      itemRow.className = "flex items-center justify-between border-b border-[#114C5A]/30 py-1.5";
+      itemRow.className = "flex items-center justify-between border-b border-[#114C5A]/30 py-2";
       itemRow.innerHTML = `
-        <div class="flex items-center space-x-2 truncate">
+        <div class="flex items-center space-x-2 truncate mr-2">
           <span class="text-xs">${itemsMeta[key].icon}</span>
           <span class="text-[#F1F6F4] truncate font-medium">${itemsMeta[key].name}</span>
-          <span class="text-[#FFC801] font-mono text-[10px]">x${quantity}</span>
         </div>
-        <span class="font-mono text-[#D9E8E2]">${itemCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+        <div class="flex items-center space-x-3 shrink-0">
+          <div class="flex items-center bg-[#114C5A]/30 rounded-lg p-0.5 border border-[#114C5A]/40 font-mono">
+            <button type="button" class="cart-minus-action px-2 py-0.5 text-[11px] font-bold text-[#D9E8E2] hover:text-[#FF9932] transition-colors cursor-pointer select-none" data-item="${key}">&minus;</button>
+            <span class="text-[#FFC801] font-bold text-[10px] px-1 min-w-[14px] text-center">${quantity}</span>
+            <button type="button" class="cart-plus-action px-2 py-0.5 text-[11px] font-bold text-[#D9E8E2] hover:text-[#FFC801] transition-colors cursor-pointer select-none" data-item="${key}">+</button>
+          </div>
+          <span class="font-mono text-[#D9E8E2] min-w-[55px] text-right">${itemCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+        </div>
       `;
       cartItemsWrapper.appendChild(itemRow);
     });
@@ -144,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cartCountNode.innerText = `${totalItemsCount} node${totalItemsCount !== 1 ? 's' : ''}`;
     cartTotalNode.innerText = computedTotalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-    // Handle high-speed entry transitions (150ms - 200ms ease-out) [cite: 65]
+    // Handle high-speed entry transitions (150ms - 200ms ease-out)
     if (totalItemsCount > 0) {
       cartDrawer.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
     } else {
@@ -158,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
   billingToggle.addEventListener('click', () => setTimeout(renderCartUpdates, 20));
 
   // ==========================================================================
-  // ONLINE OVERLAY MODAL DISPATCH CONTROL LAYER [cite: 61]
+  // ONLINE OVERLAY MODAL DISPATCH CONTROL LAYER
   // ==========================================================================
   const checkoutTriggerBtn = document.getElementById('checkout-trigger-btn');
   const paymentModal = document.getElementById('payment-modal');
@@ -199,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1200);
   });
 
-  // 5. PERFORMANCE CAPS WATCHDOG: Log operational telemetry data limits [cite: 62, 80]
+  // 5. PERFORMANCE CAPS WATCHDOG: Log operational telemetry data limits
   const initializationEnd = performance.now();
   const totalOrchestrationTime = initializationEnd - initializationStart;
   
