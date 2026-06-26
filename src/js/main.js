@@ -59,6 +59,32 @@ document.addEventListener('DOMContentLoaded', () => {
   updateGroceryPrices(currentCurrency, isBulkOrder);
 
   // ==========================================================================
+  // REAL-TIME SEARCH ENGINE ENGINE EXTENSION
+  // ==========================================================================
+  const searchInput = document.querySelector('input[placeholder="Search parameters..."]');
+  
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      const productCards = document.querySelectorAll('#marketplace .grid > div');
+
+      productCards.forEach(card => {
+        // Capture product title text context from the inner anchor link layout element
+        const titleText = card.querySelector('h3').innerText.toLowerCase();
+        const descriptionText = card.querySelector('p').innerText.toLowerCase();
+
+        // Check if query matches title text or card description elements
+        if (titleText.includes(query) || descriptionText.includes(query)) {
+          card.style.display = ''; // Show matching elements cleanly
+          card.style.opacity = '1';
+        } else {
+          card.style.display = 'none'; // Fast structural filter hide
+        }
+      });
+    });
+  }
+
+  // ==========================================================================
   // HARDWARE-ACCELERATED ISOLATED SMART DATA MATRIX STATE EXTENSION
   // ==========================================================================
   
@@ -105,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // NEW INTERACTIVE DELEGATION CONTROL: Listens for inline manual increment/decrement commands
+  // INTERACTIVE DELEGATION CONTROL: Listens for inline manual increment/decrement commands
   cartItemsWrapper.addEventListener('click', (e) => {
     const minusTarget = e.target.closest('.cart-minus-action');
     const plusTarget = e.target.closest('.cart-plus-action');
