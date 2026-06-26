@@ -1,0 +1,79 @@
+/* ==========================================================================
+   NATIVE PERFORMANCE MOTION HOOKS & TIMING ENGINE
+   ========================================================================== */
+
+/* 1. Global Performance Overrides */
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. Micro-interactions Constraints (Hovers / Toggles / Buttons) 
+   Rule Parameter: 150ms - 200ms using an ease-out curve [cite: 64, 65] */
+.bento-node,
+header select,
+header button,
+main button,
+.add-to-cart-btn {
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1) !important; /* Premium ease-out metric [cite: 65] */
+  will-change: transform, border-color, background-color, box-shadow;
+}
+
+/* Interactive scale micro-state adjustments */
+.bento-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -10px rgba(16, 185, 129, 0.08);
+}
+
+/* 3. Structural Layout Reflow Constraints (Mobile Accordion / Panel Expansions)
+   Rule Parameter: 300ms - 400ms using an ease-in-out curve [cite: 64, 65] */
+.accordion-content {
+  transition: max-height 350ms cubic-bezier(0.65, 0, 0.35, 1) !important; /* Strict ease-in-out curve [cite: 65] */
+  will-change: max-height;
+}
+
+.accordion-trigger span {
+  transition: transform 300ms cubic-bezier(0.65, 0, 0.35, 1) !important;
+  will-change: transform;
+}
+
+.accordion-item {
+  transition: border-color 300ms cubic-bezier(0.65, 0, 0.35, 1) !important;
+}
+
+/* 4. Isolated Dom Text Node Transition Animations 
+   Smooth numerical switching presentation without causing layout thrashing */
+.grocery-price-node {
+  animation: pulse-node 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pulse-node {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 5. Custom Scrollbar Styling (Maintains Premium Aesthetic Constraints) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0F19;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1F2937;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #10B981;
+}

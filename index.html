@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>FreshDrop AI | Next-Gen Intelligent Grocery Automation</title>
+  <meta name="description" content="Experience premium, high-speed automated grocery replenishment powered by decentralized predictive logistics. Precision weight matrices and automated smart aisle layouts.">
+  
+  <meta property="og:title" content="FreshDrop AI - Next-Gen Intelligent Grocery Automation">
+  <meta property="og:description" content="Premium, high-speed automated grocery replenishment powered by decentralized predictive logistics.">
+  <meta property="og:type" content="website">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#0B0F19] text-gray-100 antialiased font-sans min-h-screen flex flex-col">
+
+  <header class="border-b border-gray-800 sticky top-0 bg-[#0B0F19]/80 backdrop-blur-md z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center font-bold text-black text-xl tracking-tighter shadow-lg shadow-emerald-500/20">
+          F
+        </div>
+        <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">FreshDrop<span class="text-emerald-400">.ai</span></span>
+      </div>
+
+      <div class="flex items-center space-x-6">
+        <div class="relative">
+          <select id="currency-select" class="bg-gray-900 border border-gray-800 text-sm rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 block p-2.5 text-gray-300 cursor-pointer outline-none transition-all duration-200">
+            <option value="INR" selected>INR (₹)</option>
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+          </select>
+        </div>
+
+        <div class="flex items-center space-x-3 bg-gray-900/50 border border-gray-800 px-4 py-2 rounded-xl">
+          <span class="text-xs font-medium text-gray-400 uppercase tracking-wider">Standard</span>
+          <button id="billing-toggle" type="button" role="switch" aria-checked="false" class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-gray-700 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-emerald-500" data-checked="false">
+            <span id="toggle-handle" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-0"></span>
+          </button>
+          <span class="text-xs font-semibold text-emerald-400 uppercase tracking-wider flex items-center space-x-1">
+            <span>Bulk / Case</span>
+            <span class="bg-emerald-500/10 text-emerald-400 text-[10px] px-1.5 py-0.5 rounded-full border border-emerald-500/20">-20%</span>
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <section id="hero" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 overflow-hidden">
+      <div class="text-center max-w-3xl mx-auto relative z-10">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-6">
+          Next-Gen Autonomous Replenishment Engine v1.0
+        </span>
+        <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.1]">
+          Predictive Grocery Logistics <span class="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Done Instantly.</span>
+        </h1>
+        <p class="text-lg text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+          Skip manual item updates. Leverage multi-dimensional localized fulfillment pipelines optimized for flawless speed, cost isolation, and sub-millisecond execution.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <a href="#marketplace" class="w-full sm:w-auto text-center px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold rounded-xl transition-all duration-150 ease-out shadow-lg shadow-emerald-500/20 transform hover:-translate-y-0.5 active:translate-y-0">
+            Initialize Smart Cart
+          </a>
+          <a href="#departments" class="w-full sm:w-auto text-center px-8 py-4 bg-gray-900 hover:bg-gray-800 border border-gray-800 text-white font-semibold rounded-xl transition-all duration-150 ease-out">
+            Explore Aisle Framework
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="departments" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-gray-900">
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold tracking-tight text-white mb-2">Automated Department Ecosystem</h2>
+        <p class="text-gray-400">Interact with the nodes on desktop and test responsive resizing transitions to view the Context Lock in action.</p>
+      </div>
+
+      <div id="bento-grid-view" class="hidden md:grid grid-cols-3 gap-6 auto-rows-[240px]">
+        
+        <div class="bento-node col-span-2 row-span-1 bg-gradient-to-br from-emerald-950/40 to-gray-900 border border-gray-800 rounded-3xl p-8 relative overflow-hidden transition-all duration-200 cursor-pointer hover:border-emerald-500/40" data-index="0">
+          <div class="relative z-10 h-full flex flex-col justify-between">
+            <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase">Aisle 01</span>
+            <div>
+              <h3 class="text-2xl font-bold text-white mb-2">Organic Produce Matrix</h3>
+              <p class="text-gray-400 text-sm max-w-md">Hydration-stabilized fresh greens managed via real-time sensory hardware chains.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bento-node col-span-1 row-span-2 bg-gradient-to-br from-blue-950/30 to-gray-900 border border-gray-800 rounded-3xl p-8 relative overflow-hidden transition-all duration-200 cursor-pointer hover:border-blue-500/40" data-index="1">
+          <div class="relative z-10 h-full flex flex-col justify-between">
+            <span class="text-xs font-bold tracking-widest text-blue-400 uppercase">Aisle 02</span>
+            <div>
+              <h3 class="text-2xl font-bold text-white mb-2">Cold Chain Dairy</h3>
+              <p class="text-gray-400 text-sm">Constant thermodynamic isolation protecting integrity from processing node to checkout vault.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bento-node col-span-1 row-span-1 bg-gradient-to-br from-amber-950/30 to-gray-900 border border-gray-800 rounded-3xl p-8 relative overflow-hidden transition-all duration-200 cursor-pointer hover:border-amber-500/40" data-index="2">
+          <div class="relative z-10 h-full flex flex-col justify-between">
+            <span class="text-xs font-bold tracking-widest text-amber-400 uppercase">Aisle 03</span>
+            <div>
+              <h3 class="text-2xl font-bold text-white mb-2">Artisan Bakery Core</h3>
+              <p class="text-gray-400 text-sm">Automated micro-baking systems operating on rolling predictive schedules.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bento-node col-span-1 row-span-1 bg-gradient-to-br from-rose-950/30 to-gray-900 border border-gray-800 rounded-3xl p-8 relative overflow-hidden transition-all duration-200 cursor-pointer hover:border-rose-500/40" data-index="3">
+          <div class="relative z-10 h-full flex flex-col justify-between">
+            <span class="text-xs font-bold tracking-widest text-rose-400 uppercase">Aisle 04</span>
+            <div>
+              <h3 class="text-2xl font-bold text-white mb-2">Sustainable Proteins</h3>
+              <p class="text-gray-400 text-sm">Traceable cut isolation tracking zero-contact dynamic pricing loops.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="accordion-view" class="block md:hidden space-y-4">
+        
+        <div class="accordion-item bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden" data-index="0">
+          <button class="accordion-trigger w-full px-6 py-5 text-left flex justify-between items-center font-bold text-lg text-white">
+            <span>Organic Produce Matrix</span>
+            <span class="transform transition-transform duration-300 text-gray-500 text-sm">▼</span>
+          </button>
+          <div class="accordion-content max-h-0 overflow-hidden transition-all ease-in-out duration-300">
+            <div class="p-6 pt-0 text-sm text-gray-400 line-height-relaxed">
+              Hydration-stabilized fresh greens managed via real-time sensory hardware chains. Precision-engineered climate vaults hold shelf degradation variables to an absolute baseline minimum.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden" data-index="1">
+          <button class="accordion-trigger w-full px-6 py-5 text-left flex justify-between items-center font-bold text-lg text-white">
+            <span>Cold Chain Dairy</span>
+            <span class="transform transition-transform duration-300 text-gray-500 text-sm">▼</span>
+          </button>
+          <div class="accordion-content max-h-0 overflow-hidden transition-all ease-in-out duration-300">
+            <div class="p-6 pt-0 text-sm text-gray-400 line-height-relaxed">
+              Constant thermodynamic isolation protecting integrity from processing node to checkout vault. Monitored continuously via state-isolated sensor logic tracking ambient thermal decay.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden" data-index="2">
+          <button class="accordion-trigger w-full px-6 py-5 text-left flex justify-between items-center font-bold text-lg text-white">
+            <span>Artisan Bakery Core</span>
+            <span class="transform transition-transform duration-300 text-gray-500 text-sm">▼</span>
+          </button>
+          <div class="accordion-content max-h-0 overflow-hidden transition-all ease-in-out duration-300">
+            <div class="p-6 pt-0 text-sm text-gray-400 line-height-relaxed">
+              Automated micro-baking systems operating on rolling predictive schedules. Fresh components are batched via optimization neural chains tailored precisely to local neighborhood velocity.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden" data-index="3">
+          <button class="accordion-trigger w-full px-6 py-5 text-left flex justify-between items-center font-bold text-lg text-white">
+            <span>Sustainable Proteins</span>
+            <span class="transform transition-transform duration-300 text-gray-500 text-sm">▼</span>
+          </button>
+          <div class="accordion-content max-h-0 overflow-hidden transition-all ease-in-out duration-300">
+            <div class="p-6 pt-0 text-sm text-gray-400 line-height-relaxed">
+              Traceable cut isolation tracking zero-contact dynamic pricing loops. Formed from entirely sustainable biological pathways audited securely against distributed provenance trails.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="marketplace" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-gray-900">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <span class="text-xs font-bold tracking-widest text-emerald-400 uppercase">Live Inventory Matrix</span>
+          <h2 class="text-3xl font-bold tracking-tight text-white mt-1">Surgical Fulfillment Catalog</h2>
+        </div>
+        <p class="text-gray-400 max-w-md text-sm md:text-right">
+          Surgically adding or removing catalog quantities mutates text nodes locally without triggering global component reflow.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="bg-gray-900/40 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between hover:border-emerald-500/20 group transition-all">
+          <div>
+            <div class="h-40 w-full bg-gradient-to-br from-emerald-500/10 to-transparent rounded-2xl mb-4 flex items-center justify-center relative overflow-hidden">
+              <span class="text-4xl group-hover:scale-110 transition-transform duration-200">🥑</span>
+              <span class="absolute top-3 right-3 bg-emerald-500/10 text-emerald-400 text-[10px] px-2 py-0.5 rounded-md border border-emerald-500/20 font-mono font-medium">FRESH</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">Organic Hass Avocado</h3>
+            <p class="text-gray-400 text-xs mb-4 line-clamp-2">Handpicked volcanic-soil variants optimized for lipid density and shelf freshness.</p>
+          </div>
+          <div>
+            <div class="flex items-baseline justify-between mb-4">
+              <span class="text-xs text-gray-500 font-mono">1 Unit (~200g)</span>
+              <div class="text-xl font-mono font-extrabold text-white">
+                <span class="currency-symbol">₹</span><span class="grocery-price-node" data-item="organic_avocado">120.00</span>
+              </div>
+            </div>
+            <button class="add-to-cart-btn w-full py-2.5 bg-gray-800 hover:bg-emerald-500 hover:text-black border border-gray-700 hover:border-transparent text-gray-300 text-xs font-semibold rounded-xl transition-all" data-item="organic_avocado">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-gray-900/40 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between hover:border-emerald-500/20 group transition-all">
+          <div>
+            <div class="h-40 w-full bg-gradient-to-br from-amber-500/10 to-transparent rounded-2xl mb-4 flex items-center justify-center relative overflow-hidden">
+              <span class="text-4xl group-hover:scale-110 transition-transform duration-200">🌾</span>
+              <span class="absolute top-3 right-3 bg-amber-500/10 text-amber-400 text-[10px] px-2 py-0.5 rounded-md border border-amber-500/20 font-mono font-medium">PREMIUM</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">Premium Basmati Grain</h3>
+            <p class="text-gray-400 text-xs mb-4 line-clamp-2">Aged long-grain aromatic variants vetted through automated vision grading blocks.</p>
+          </div>
+          <div>
+            <div class="flex items-baseline justify-between mb-4">
+              <span class="text-xs text-gray-500 font-mono">1 Bag (1kg)</span>
+              <div class="text-xl font-mono font-extrabold text-white">
+                <span class="currency-symbol">₹</span><span class="grocery-price-node" data-item="premium_basmati">150.00</span>
+              </div>
+            </div>
+            <button class="add-to-cart-btn w-full py-2.5 bg-gray-800 hover:bg-emerald-500 hover:text-black border border-gray-700 hover:border-transparent text-gray-300 text-xs font-semibold rounded-xl transition-all" data-item="premium_basmati">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-gray-900/40 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between hover:border-emerald-500/20 group transition-all">
+          <div>
+            <div class="h-40 w-full bg-gradient-to-br from-blue-500/10 to-transparent rounded-2xl mb-4 flex items-center justify-center relative overflow-hidden">
+              <span class="text-4xl group-hover:scale-110 transition-transform duration-200">🥛</span>
+              <span class="absolute top-3 right-3 bg-blue-500/10 text-blue-400 text-[10px] px-2 py-0.5 rounded-md border border-blue-500/20 font-mono font-medium">COLD-CHAIN</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">Organic Almond Milk</h3>
+            <p class="text-gray-400 text-xs mb-4 line-clamp-2">High-biodavailability cold-pressed variant containing zero preservation stabilizers.</p>
+          </div>
+          <div>
+            <div class="flex items-baseline justify-between mb-4">
+              <span class="text-xs text-gray-500 font-mono">1 Bottle (750ml)</span>
+              <div class="text-xl font-mono font-extrabold text-white">
+                <span class="currency-symbol">₹</span><span class="grocery-price-node" data-item="almond_milk">250.00</span>
+              </div>
+            </div>
+            <button class="add-to-cart-btn w-full py-2.5 bg-gray-800 hover:bg-emerald-500 hover:text-black border border-gray-700 hover:border-transparent text-gray-300 text-xs font-semibold rounded-xl transition-all" data-item="almond_milk">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-gray-900/40 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between hover:border-emerald-500/20 group transition-all">
+          <div>
+            <div class="h-40 w-full bg-gradient-to-br from-rose-500/10 to-transparent rounded-2xl mb-4 flex items-center justify-center relative overflow-hidden">
+              <span class="text-4xl group-hover:scale-110 transition-transform duration-200">🍅</span>
+              <span class="absolute top-3 right-3 bg-rose-500/10 text-rose-400 text-[10px] px-2 py-0.5 rounded-md border border-rose-500/20 font-mono font-medium">ORGANIC</span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-1">Hydroponic Vine Tomatoes</h3>
+            <p class="text-gray-400 text-xs mb-4 line-clamp-2">Vine-ripened greenhouse varieties tracking optimal sugar-to-acid balances.</p>
+          </div>
+          <div>
+            <div class="flex items-baseline justify-between mb-4">
+              <span class="text-xs text-gray-500 font-mono">1 Pack (500g)</span>
+              <div class="text-xl font-mono font-extrabold text-white">
+                <span class="currency-symbol">₹</span><span class="grocery-price-node" data-item="vine_tomatoes">90.00</span>
+              </div>
+            </div>
+            <button class="add-to-cart-btn w-full py-2.5 bg-gray-800 hover:bg-emerald-500 hover:text-black border border-gray-700 hover:border-transparent text-gray-300 text-xs font-semibold rounded-xl transition-all" data-item="vine_tomatoes">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="social-proof" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-gray-900">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="bg-gray-900/20 p-6 rounded-2xl border border-gray-900">
+          <div class="text-3xl font-mono font-extrabold text-emerald-400 mb-1">99.98%</div>
+          <div class="text-xs text-gray-400 font-medium tracking-wide uppercase">Fulfillment Accuracy</div>
+        </div>
+        <div class="bg-gray-900/20 p-6 rounded-2xl border border-gray-900">
+          <div class="text-3xl font-mono font-extrabold text-emerald-400 mb-1">&lt;14 Mins</div>
+          <div class="text-xs text-gray-400 font-medium tracking-wide uppercase">Average Dispatch Speed</div>
+        </div>
+        <div class="bg-gray-900/20 p-6 rounded-2xl border border-gray-900">
+          <div class="text-3xl font-mono font-extrabold text-emerald-400 mb-1">42,000+</div>
+          <div class="text-xs text-gray-400 font-medium tracking-wide uppercase">Active Automated Hubs</div>
+        </div>
+        <div class="bg-gray-900/20 p-6 rounded-2xl border border-gray-900">
+          <div class="text-3xl font-mono font-extrabold text-emerald-400 mb-1">0ms</div>
+          <div class="text-xs text-gray-400 font-medium tracking-wide uppercase">UI Layout Reflow Trash</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="cart-drawer" class="fixed bottom-6 right-6 z-50 bg-[#0F172A] border border-gray-800 p-5 rounded-2xl shadow-2xl shadow-black/80 max-w-sm w-full transform translate-y-32 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="flex items-center justify-between border-b border-gray-800 pb-3 mb-3">
+      <div class="flex items-center space-x-2">
+        <span class="text-xl">🛒</span>
+        <h4 class="font-bold text-white text-sm">Fulfillment Buffer</h4>
+      </div>
+      <span id="cart-count" class="bg-emerald-500/10 text-emerald-400 text-xs px-2 py-0.5 rounded-full font-mono border border-emerald-500/20">0 items</span>
+    </div>
+    
+    <div id="cart-items-wrapper" class="space-y-2 max-h-40 overflow-y-auto pr-1 text-xs text-gray-400">
+      <p class="text-gray-500 py-4 text-center italic">Buffer empty. Awaiting stream injection...</p>
+    </div>
+
+    <div class="border-t border-gray-800 pt-3 mt-3">
+      <div class="flex items-center justify-between text-sm mb-3">
+        <span class="text-gray-400 font-medium">Aggregated Cost</span>
+        <div class="font-mono font-extrabold text-emerald-400">
+          <span class="currency-symbol">₹</span><span id="cart-total-value">0.00</span>
+        </div>
+      </div>
+      
+      <button id="checkout-trigger-btn" class="w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-sm rounded-xl transition-all shadow-lg shadow-emerald-500/10 uppercase tracking-wider">
+        Pay Online
+      </button>
+    </div>
+  </div>
+
+  <div id="payment-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-[#0F172A] border border-gray-800 max-w-sm w-full rounded-3xl overflow-hidden shadow-2xl shadow-black/90 transform scale-95 transition-transform duration-300">
+      
+      <div class="bg-gradient-to-r from-blue-950 to-gray-950 px-5 py-4 flex items-center justify-between border-b border-gray-800">
+        <div class="flex items-center space-x-2">
+          <span class="text-lg">🔒</span>
+          <div>
+            <h3 class="text-white font-bold text-xs tracking-tight">Secure Sandbox Gateway</h3>
+            <p class="text-[9px] text-emerald-400 font-mono">Encrypted Connection Verified</p>
+          </div>
+        </div>
+        <button id="close-payment-btn" class="text-gray-400 hover:text-white text-xl font-bold p-1 leading-none">&times;</button>
+      </div>
+
+      <div class="p-6 space-y-5 text-center">
+        
+        <div class="bg-gray-950/40 rounded-xl p-3 border border-gray-800 flex justify-between items-center text-left">
+          <span class="text-[11px] font-semibold uppercase tracking-wider text-gray-500">Amount Due</span>
+          <div class="text-xl font-mono font-extrabold text-emerald-400">
+            <span class="currency-symbol">₹</span><span id="modal-payable-total">0.00</span>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-2xl inline-block shadow-inner mx-auto border-2 border-emerald-500/20">
+          <div class="w-40 h-40 bg-gray-100 flex flex-col items-center justify-center rounded-xl relative border border-gray-200">
+            <div class="absolute inset-3 border-4 border-gray-900 flex flex-col justify-between p-2">
+              <div class="flex justify-between">
+                <div class="w-4 h-4 bg-gray-900"></div>
+                <div class="w-4 h-4 bg-gray-900"></div>
+              </div>
+              <div class="w-6 h-6 bg-gray-900 self-center rounded-sm"></div>
+              <div class="flex justify-between">
+                <div class="w-4 h-4 bg-gray-900"></div>
+                <div class="w-4 h-4 bg-gray-900"></div>
+              </div>
+            </div>
+            <span class="text-[9px] font-mono font-bold tracking-widest text-white bg-black px-2 py-0.5 rounded z-10 uppercase shadow">Scan to Pay</span>
+          </div>
+        </div>
+
+        <p class="text-xs text-gray-400 max-w-xs mx-auto leading-relaxed">
+          Scan the QR matrix using any supported application or choose the simulation link fallback channel underneath.
+        </p>
+
+        <div class="border-t border-gray-800/60 pt-4 flex flex-col gap-2">
+          <button id="process-payment-btn" class="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl transition-all shadow-md uppercase tracking-wider">
+            Simulate Instant Authorization
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-t border-gray-900 bg-gray-950/50 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-sm text-gray-500">
+      <p>&copy; 2026 FreshDrop AI Infrastructure Corporation. All rights secured.</p>
+      <div class="flex space-x-6 mt-4 sm:mt-0 font-mono text-xs">
+        <span>TTI: &lt;500ms</span>
+        <span>Isolated Nodes Configured</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="src/js/main.js"></script>
+</body>
+</html>
