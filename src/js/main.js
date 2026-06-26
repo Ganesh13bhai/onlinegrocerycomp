@@ -41,11 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Hardware-accelerated micro-interaction layout update (150ms - 200ms ease-out) [cite: 65]
     if (isBulkOrder) {
-      billingToggle.classList.replace('bg-gray-700', 'bg-emerald-500');
+      billingToggle.classList.add('bg-[#FFC801]');
       toggleHandle.classList.replace('translate-x-0', 'translate-x-5');
+      // Shift toggle bubble profile accent dynamically
+      toggleHandle.classList.replace('bg-[#F1F6F4]', 'bg-[#172836]');
     } else {
-      billingToggle.classList.replace('bg-emerald-500', 'bg-gray-700');
+      billingToggle.classList.remove('bg-[#FFC801]');
       toggleHandle.classList.replace('translate-x-5', 'translate-x-0');
+      toggleHandle.classList.replace('bg-[#172836]', 'bg-[#F1F6F4]');
     }
 
     // SURGICAL RUNTIME ENGINE: Compute multi-dimensional layout shifts instantly [cite: 43, 59]
@@ -56,10 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
   updateGroceryPrices(currentCurrency, isBulkOrder);
 
   // ==========================================================================
-  // HARDWARE-ACCELERATED ISOLATED SMART CART SYSTEM ENGINE
+  // HARDWARE-ACCELERATED ISOLATED SMART DATA MATRIX STATE EXTENSION
   // ==========================================================================
   
-  // Real Localized State (Keeps data binding strictly out of global view reflows)
+  // Real Localized State (Keeps data binding strictly out of global view reflows) [cite: 60]
   const cartState = {};
 
   const cartDrawer = document.getElementById('cart-drawer');
@@ -70,10 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Object metadata dictionary mapping human strings
   const itemsMeta = {
-    organic_avocado: { name: "Organic Avocado", emoji: "🥑" },
-    premium_basmati: { name: "Premium Basmati", emoji: "🌾" },
-    almond_milk: { name: "Organic Almond Milk", emoji: "🥛" },
-    vine_tomatoes: { name: "Vine Tomatoes", emoji: "🍅" }
+    organic_avocado: { name: "Neural Shard", icon: "📊" },
+    premium_basmati: { name: "Velocity Cluster", icon: "⚙️" },
+    almond_milk: { name: "Hyper Pipeline", icon: "🔗" },
+    vine_tomatoes: { name: "Memory Pool", icon: "🔄" }
   };
 
   addToCartButtons.forEach(button => {
@@ -83,16 +86,21 @@ document.addEventListener('DOMContentLoaded', () => {
       // Increment state tally context
       cartState[itemKey] = (cartState[itemKey] || 0) + 1;
       
-      // Flash button state visually as micro-interaction response
+      // Flash button state visually as micro-interaction response [cite: 65]
       const originalText = button.innerText;
       button.innerText = "✓ Allocated";
-      button.classList.replace('text-gray-300', 'text-emerald-400');
+      button.style.color = '#172836';
+      button.style.backgroundColor = '#FFC801';
+      button.style.borderColor = 'transparent';
+      
       setTimeout(() => {
         button.innerText = originalText;
-        button.classList.replace('text-emerald-400', 'text-gray-300');
-      }, 800);
+        button.style.color = '';
+        button.style.backgroundColor = '';
+        button.style.borderColor = '';
+      }, 700);
 
-      // Perform a surgical render updates across the drawer metrics
+      // Perform a surgical render updates across the drawer metrics [cite: 60]
       renderCartUpdates();
     });
   });
@@ -101,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let totalItemsCount = 0;
     let computedTotalValue = 0;
     
-    // Read active configurations safely from current nodes
+    // Read active configurations safely from current nodes to match currency selection instantly
     const activePrices = {};
     document.querySelectorAll('.grocery-price-node').forEach(node => {
       activePrices[node.getAttribute('data-item')] = parseFloat(node.innerText.replace(/,/g, ''));
@@ -120,20 +128,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Create isolated wrapper child layout strings
       const itemRow = document.createElement('div');
-      itemRow.className = "flex items-center justify-between border-b border-gray-800/40 py-1.5 font-sans";
+      itemRow.className = "flex items-center justify-between border-b border-[#114C5A]/30 py-1.5";
       itemRow.innerHTML = `
         <div class="flex items-center space-x-2 truncate">
-          <span>${itemsMeta[key].emoji}</span>
-          <span class="text-white truncate font-medium">${itemsMeta[key].name}</span>
-          <span class="text-gray-500 font-mono text-[10px]">x${quantity}</span>
+          <span class="text-xs">${itemsMeta[key].icon}</span>
+          <span class="text-[#F1F6F4] truncate font-medium">${itemsMeta[key].name}</span>
+          <span class="text-[#FFC801] font-mono text-[10px]">x${quantity}</span>
         </div>
-        <span class="font-mono text-gray-300">${itemCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+        <span class="font-mono text-[#D9E8E2]">${itemCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
       `;
       cartItemsWrapper.appendChild(itemRow);
     });
 
     // Update system counter strings safely
-    cartCountNode.innerText = `${totalItemsCount} item${totalItemsCount !== 1 ? 's' : ''}`;
+    cartCountNode.innerText = `${totalItemsCount} node${totalItemsCount !== 1 ? 's' : ''}`;
     cartTotalNode.innerText = computedTotalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
     // Handle high-speed entry transitions (150ms - 200ms ease-out) [cite: 65]
@@ -141,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
       cartDrawer.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
     } else {
       cartDrawer.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
-      cartItemsWrapper.innerHTML = `<p class="text-gray-500 py-4 text-center italic">Buffer empty. Awaiting stream injection...</p>`;
+      cartItemsWrapper.innerHTML = `<p class="text-[#D9E8E2]/40 py-4 text-center italic">No instances allocated in current buffer pipeline.</p>`;
     }
   }
 
@@ -150,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
   billingToggle.addEventListener('click', () => setTimeout(renderCartUpdates, 20));
 
   // ==========================================================================
-  // ONLINE OVERLAY PAYMENT TRIGGER FRAMEWORK
+  // ONLINE OVERLAY MODAL DISPATCH CONTROL LAYER [cite: 61]
   // ==========================================================================
   const checkoutTriggerBtn = document.getElementById('checkout-trigger-btn');
   const paymentModal = document.getElementById('payment-modal');
@@ -160,10 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalInnerContainer = paymentModal.querySelector('div');
 
   checkoutTriggerBtn.addEventListener('click', () => {
-    // Dynamically lock down total values right into the payment interface readouts
-    modalPayableTotal.innerText = document.getElementById('cart-total-value').innerText;
-    
-    // Smooth opacity reveal (150ms-200ms ease-out) [cite: 65]
+    modalPayableTotal.innerText = cartTotalNode.innerText;
     paymentModal.classList.remove('opacity-0', 'pointer-events-none');
     modalInnerContainer.classList.replace('scale-95', 'scale-100');
   });
@@ -179,15 +184,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   processPaymentBtn.addEventListener('click', () => {
-    processPaymentBtn.innerText = "Authorizing Funds...";
+    processPaymentBtn.innerText = "Synchronizing Block...";
     processPaymentBtn.disabled = true;
     
     setTimeout(() => {
-      alert("Fulfillment Buffer cleared. Transaction successfully captured!");
-      processPaymentBtn.innerText = "Simulate Instant Authorization";
+      alert("Pipeline Authorized! Deployment instance structural allocation successfully finalized.");
+      processPaymentBtn.innerText = "Simulate Authorization";
       processPaymentBtn.disabled = false;
       
-      // Flush cart items safely
+      // Flush cart items variables safely without global refresh
       Object.keys(cartState).forEach(key => delete cartState[key]);
       renderCartUpdates();
       dismissModal();
@@ -199,6 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const totalOrchestrationTime = initializationEnd - initializationStart;
   
   console.log(`%cFreshDrop Engine Activated: Core thread initialized in ${totalOrchestrationTime.toFixed(2)}ms`, 
-    totalOrchestrationTime < 500 ? 'color: #10b981; font-weight: bold;' : 'color: #f43f5e; font-weight: bold;'
+    totalOrchestrationTime < 500 ? 'color: #FFC801; font-weight: bold;' : 'color: #FF9932; font-weight: bold;'
   );
 });
