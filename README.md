@@ -2,6 +2,7 @@
 
 
 # FreshDrop AI Data Platform Dashboard
+# Here is the website page: https://ganesh13bhai.github.io/onlinegrocerycomp/
 
 A high-performance, responsive single-page dashboard designed for tracking, allocating, and analyzing intelligent data automation pipelines. This platform is built with a zero-dependency architecture to enforce absolute state isolation and sub-millisecond document reflow timings.
 
